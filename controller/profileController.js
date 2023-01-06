@@ -45,4 +45,14 @@ const getProfile=async(req,res)=>{
         return res.status(500).json({error:error.message})
        }
 }
-module.exports={updateProfile,getProfile}
+
+const getAllUser=async(req,res)=>{
+    try{
+        foundUser=await User.find()
+        res.status(200).json({ status : 1,message:"user found",data:foundUser})
+       }
+       catch(error){
+        return res.status(500).json({error:error.message})
+       }
+}
+module.exports={updateProfile,getProfile,getAllUser}
